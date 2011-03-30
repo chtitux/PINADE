@@ -22,3 +22,5 @@
 
 
       <fb:login-button>Login with Facebook</fb:login-button>
+<?php $sfGuardUser = sfFacebook::getSfGuardUserByFacebookSession(); ?>
+Hello <fb:name uid="<?php echo $sfGuardUser ? $sfGuardUser->getProfile()->getFacebookUid() : '' ?>"></fb:name>
