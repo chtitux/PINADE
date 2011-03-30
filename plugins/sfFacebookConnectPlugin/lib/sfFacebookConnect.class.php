@@ -27,7 +27,7 @@ class sfFacebookConnect
     $query = 'SELECT email_hashes FROM user WHERE uid=\''.intval($fb_uid).'\'';
     try
     {
-      $rows = sfFacebook::getFacebookClient()->api_client->fql_query($query);
+      $rows = sfFacebook::getFacebookClient()->client->fql_query($query);
     }
     catch (Exception $e)
     {
@@ -175,13 +175,13 @@ class sfFacebookConnect
       return 0;
     }
     $facebook = sfFacebook::getFacebookClient();
-    $session_key = $facebook->api_client->session_key;
-    $facebook->api_client->session_key = null;
+    $session_key = $facebook->client->session_key;
+    $facebook->client->session_key = null;
 
     $result = false;
     try
     {
-      $ret = $facebook->api_client->call_method(
+      $ret = $facebook->client->call_method(
                'facebook.connect.registerUsers',
                array('accounts' => json_encode($accounts)));
 
@@ -198,7 +198,7 @@ class sfFacebookConnect
     {
       error_log("Exception thrown while calling facebook.connect.registerUsers: ".$e->getMessage());
     }
-    $facebook->api_client->session_key = $session_key;
+    $facebook->client->session_key = $session_key;
 
     return $result;
   }
