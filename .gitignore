@@ -8,4 +8,5 @@ log/*
 web/images/edt/*
 !web/images/edt/dummy.txt
 config/databases.yml
+plugins/sfFacebookConnectPlugin/config/app.yml
 
