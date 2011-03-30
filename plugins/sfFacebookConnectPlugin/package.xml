@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sfFacebookConnectPlugin</name>
+ <channel>plugins.symfony-project.org</channel>
+ <summary>Add easily Facebook connect to your symfony website and/or develop IFrame-FBML agnostic Facebook applications.</summary>
+ <description>The sfFacebookConnectPlugin provides multiples functionalities geared both at making Facebook Connect integration in a symfony website easy and also help develop Facebook applications. This is achieved by smoothly connecting sfGuard (Doctrine AND Propel) with Facebook and helping developers program without worrying about whether the application is FBML or IFrame/Facebook Connect.</description>
+ <lead>
+  <name>Fabrice Bernhard</name>
+  <user>fabriceb</user>
+  <email>fabriceb@theodo.fr</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Thomas Parisot</name>
+  <user>oncletom</user>
+  <email>thomas@oncle-tom.net</email>
+  <active>yes</active>
+ </developer>
+ <developer>
+  <name>Damien Alexandre</name>
+  <user>dalexandre</user>
+  <email>dalexandre@clever-age.com</email>
+  <active>yes</active>
+ </developer>
+ <developer>
+  <name>Benjamin Grandfond</name>
+  <user>benjaming</user>
+  <email>benjaming@theodo.fr</email>
+  <active>yes</active>
+ </developer>
+ <date>2010-10-27</date>
+ <time>18:45:49</time>
+ <version>
+  <release>1.1.1</release>
+  <api>1.1.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.symfony-project.org/license">MIT License</license>
+ <notes>
+Symfony 1.4 officialy compatible version
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="3ec89c0500f1b0754563e6a6f21de029" name="config/app.yml" role="data" />
+   <file baseinstalldir="/" md5sum="8dde56c13cce1e543ce18992537af566" name="config/config.php" role="php" />
+   <file baseinstalldir="/" md5sum="25fb2074ea07fc357e435dc757a801fd" name="data/tasks/sfFacebookConnectRegisterUsersTask.php" role="php" />
+   <file baseinstalldir="/" md5sum="d72f4e4bac2e48cf91ca55b87ba112c8" name="data/tasks/sfFacebookRegisterFeedTask.php" role="php" />
+   <file baseinstalldir="/" md5sum="f0ba313e0828624b48dca5ff357d3e85" name="lib/sfFacebook.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="66cf19c21e5c8f742d0d8c2bd674a370" name="lib/sfFacebookAutoConnectFilter.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="eaa28246bb48825fdd99e1ea83931e14" name="lib/sfFacebookConnect.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="95e37d997c44f6d3fd42003b2161405f" name="lib/sfFacebookDoctrineGuardAdapter.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="dde4c2cb9e72b6a162a59b5db9d6a5d6" name="lib/sfFacebookGuardAdapter.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="ae98a9fc1063642fc2740dcf039b80be" name="lib/sfFacebookPropelGuardAdapter.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="d9183926a3723c3c60342f403918bbf2" name="lib/sfFacebookSecurityFilter.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="61e742978b0fc995c7cbb19be454eb4b" name="lib/helper/sfFacebookConnectHelper.php" role="php" />
+   <file baseinstalldir="/" md5sum="8706a4ad29582af46f60a26ef717d6e3" name="lib/helper/sfFacebookHelper.php" role="php" />
+   <file baseinstalldir="/" md5sum="e0136270e462488129834597571efa75" name="lib/routing/sfFacebookConnectRouting.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="17e9e89115e34e503e92c3e56207cf31" name="lib/task/facebookgeneratefeedTask.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="784697f6d96b0b360b08f1c5c843abd6" name="lib/task/registerUsersTask.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="59986808d74d83ea8b9a2e948ab24be2" name="lib/vendor/php-sdk/readme.md" role="data" />
+   <file baseinstalldir="/" md5sum="d7dc953e1e1c6028bb6e5e4c9057e34a" name="lib/vendor/php-sdk/examples/example.php" role="php" />
+   <file baseinstalldir="/" md5sum="8f7fcef393c5fcfa50cb12e657be72d7" name="lib/vendor/php-sdk/src/facebook.php" role="php" />
+   <file baseinstalldir="/" md5sum="08b3a68277bf9f2d2e3d0876deed4a4e" name="lib/vendor/php-sdk/tests/tests.php" role="php" />
+   <file baseinstalldir="/" md5sum="8fe6213bdae94d7d58fb54808f0c0acb" name="modules/sfFacebookConnectAuth/actions/actions.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="a699126932785542f8a7cd71717d879e" name="modules/sfFacebookConnectAuth/config/security.yml" role="data" />
+   <file baseinstalldir="/" md5sum="e8708d5f6178083e8b06dfd362a29c7b" name="modules/sfFacebookConnectAuth/lib/BasesfFacebookConnectAuthActions.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="1647bab96e87034d779326be5fd895d4" name="modules/sfFacebookConnectAuth/templates/secureSuccess.php" role="php" />
+   <file baseinstalldir="/" md5sum="ddd3cb13643ef9382b109618309c2248" name="modules/sfFacebookConnectAuth/templates/signinSuccess.php" role="php" />
+   <file baseinstalldir="/" md5sum="88326b38ba4b0ebf475f8ce89fc5266f" name="modules/sfFacebookConnectDemo/actions/actions.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="000b1e7b193cebf9f50e85df1bb0c756" name="modules/sfFacebookConnectDemo/templates/fbmllayout.php" role="php" />
+   <file baseinstalldir="/" md5sum="2546da7760ba88a31fcef036f6d3df02" name="modules/sfFacebookConnectDemo/templates/indexSuccess.php" role="php" />
+   <file baseinstalldir="/" md5sum="f992149963be94ad34e5b81820c9ed82" name="test/bootstrap/functional.php" role="php" />
+   <file baseinstalldir="/" md5sum="d67a113b3464c2dab201d097a9d08e39" name="test/bootstrap/unit10.php" role="php" />
+   <file baseinstalldir="/" md5sum="aaf76f8028fe0fd9a551092a6d8b1b26" name="test/bootstrap/unit12.php" role="php" />
+   <file baseinstalldir="/" md5sum="2d70b0b4b666e3fc44aa445305efac91" name="test/unit/sfFacebookDoctrineGuardAdapterTest.php" role="php" />
+   <file baseinstalldir="/" md5sum="b7010753d68f322ef77e0ece5e635181" name="test/unit/sfFacebookPropelGuardAdapterTest.php" role="php" />
+   <file baseinstalldir="/" md5sum="a906c16a6a51906dad025456163afd19" name="web/xd_receiver.htm" role="data" />
+   <file baseinstalldir="/" md5sum="3253def1562e2d81d24b85ea88756dac" name="web/images/fb_dark_medium_short.gif" role="data" />
+   <file baseinstalldir="/" md5sum="65f7b651ba44fd193e5a0ad9c7b70300" name="web/images/fb_light_large_short.gif" role="data" />
+   <file baseinstalldir="/" md5sum="5f6391abb4aec13c2aa1d71a6ffb4df0" name="web/images/fb_light_medium_long.gif" role="data" />
+   <file baseinstalldir="/" md5sum="09774ed46d20a52ba5842256e69a4f1d" name="web/images/fb_light_medium_short.gif" role="data" />
+   <file baseinstalldir="/" md5sum="718f1aef1775a2191c6bd2a80de823c2" name="web/images/fb_light_small_short.gif" role="data" />
+   <file baseinstalldir="/" md5sum="036b25559ca4a758e101b17bf1c8b33f" name="web/js/sfFacebookConnect.js" role="data" />
+   <file baseinstalldir="/" md5sum="cbfdfdeafeabad45a6252704833c407b" name="web/js/animation/animation.compressed.js" role="data" />
+   <file baseinstalldir="/" md5sum="b445f581c1363870174498b210ddf6aa" name="web/js/animation/animation.js" role="data" />
+   <file baseinstalldir="/" md5sum="f01d4b7e216cbe34db9af04bd6fb17c3" name="web/js/animation/LICENSE" role="data" />
+   <file baseinstalldir="/" md5sum="1c65797d6ae1bc9fec6481bbb763e6da" name="web/js/animation/README" role="data" />
+   <file baseinstalldir="/" md5sum="f8caa5d98cc668fbff0ed34c5081a22b" name="genpkgxml.php" role="php" />
+   <file baseinstalldir="/" md5sum="950224ff2a39656ba5c4955ce06a41d7" name="LICENSE" role="doc" />
+   <file baseinstalldir="/" md5sum="6dcaf595cb253475e19ae4a4cb216ba5" name="README" role="doc" />
+   <file baseinstalldir="/" md5sum="0a6ace2158b365157b34ddae0bd1c420" name="sfFacebookConnectPlugin-1.1.0.tgz" role="data" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   <package>
+    <name>symfony</name>
+    <channel>pear.symfony-project.com</channel>
+    <min>1.0.0</min>
+    <max>1.5.0</max>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>1.1.1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2010-10-27</date>
+   <license uri="http://www.symfony-project.org/license">MIT License</license>
+   <notes>
+Symfony 1.4 officialy compatible version
+   </notes>
+  </release>
+ </changelog>
+</package>
