@@ -15,7 +15,7 @@ default:
 
   stylesheets:    [base.css, modele07.css ]
 
-  javascripts:    []
+  javascripts:    [/sfFacebookConnectPlugin/js/animation/animation.js]
 
   has_layout:     true
   layout:         layout

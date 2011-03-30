@@ -34,3 +34,32 @@ Promotion:
     height:             { type: integer, default: 600 }
   relations:
     Filiere:  { local: filiere_id, foreign: id, type: one }
+
+sfGuardUserProfile:
+  tableName:     sf_guard_user_profile
+  columns:
+    user_id:          { type: integer(20), notnull: true }
+    first_name:       { type: string(30) }
+    last_name:        { type: string(30) }
+    facebook_uid:     { type: string(20) }
+    email:            { type: string(255) }
+    email_hash:       { type: string(255) }
+  indexes:
+    facebook_uid_index:
+      fields: [facebook_uid]
+      unique: true
+    email_index:
+      fields: [email]
+      unique: true
+    email_hash_index:
+      fields: [email_hash]
+      unique: true
+  relations:
+    sfGuardUser:
+      type: one
+      foreignType: one
+      class: sfGuardUser
+      local: user_id
+      foreign: id
+      onDelete: cascade
+      foreignAlias: Profile

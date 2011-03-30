@@ -12,6 +12,11 @@ class ProjectConfiguration extends sfProjectConfiguration
   {
     $this->enablePlugins('sfDoctrinePlugin');
 
+    // Authentification
+    $this->enablePlugins('sfDoctrineGuardPlugin');
+    $this->enablePlugins('sfFacebookConnectPlugin');
+  
+    // config ADE
     $this->enablePlugins('sfADEConfigPlugin');
   }
 }

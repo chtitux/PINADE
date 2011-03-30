@@ -17,3 +17,8 @@
 <?php endforeach ?>
 </ul>
 
+<?php use_helper('sfFacebookConnect')?>
+<?php echo include_facebook_connect_script() ?>
+
+
+      <fb:login-button>Login with Facebook</fb:login-button>
