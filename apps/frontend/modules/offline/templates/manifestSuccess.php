@@ -11,7 +11,7 @@ foreach($sf_response->getStylesheets() as $file => $options) {
 ?>
 # IMG logo files
 <?php
-foreach($categories as $categorie) {
+foreach($categories as $c) {
   echo image_path("logos/".$categorie->getLogo())."\n";
 }
 ?>
