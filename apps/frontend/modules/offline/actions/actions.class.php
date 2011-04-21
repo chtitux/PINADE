@@ -17,46 +17,34 @@ class offlineActions extends sfActions
   */
   public function executeManifest(sfWebRequest $request)
   {
-    $cookie = $request->getCookie('offline');
-    $this->forward404Unless(($cookie == "enabled"));
+    $this->promotion = Doctrine_Core::getTable('Promotion')
+      ->createQuery('p')
+      ->leftJoin('p.Categorie c')
+      ->where('p.url = ? AND c.url = ?', array($request->getParameter('promo'),  $request->getParameter('categorie')))
+      ->execute()
+      ->getFirst();
+    $this->forward404Unless($this->promotion);
 
-    $filiere = $request->getParameter('filiere');
-    $promo = $request->getParameter('promo');
-    $semaine = intval($request->getParameter('semaine', AdeTools::getSemaineNumber()));
+    $this->categories = Doctrine_Core::getTable('Categorie')
+      ->createQuery('c')
+      ->execute();
 
-    // Check if it exists really
-    $adeImage = new AdeImage(
-      array(array('filiere' => $filiere, 'promo' => $promo )),
-      array('idPianoWeek' => $semaine)
-    );
+    $this->semaine = intval($request->getParameter('semaine', AdeTools::getSemaineNumber()));
+
+
+    $adeImage = new AdeImage($this->promotion, $this->semaine);
 
     // Disable layout, it's a plain text file
     $this->setLayout(false);
     $this->getResponse()->setContentType('text/cache-manifest');
 
-    $this->filiere = $filiere;
-    $this->promo = $promo;
-    $this->semaine = $semaine;
-    $this->adeImage = $adeImage;
+    $this->categorie = $this->promotion->getCategorie();
 
-    $this->filieres = array_keys(sfConfig::get('sf_filieres'));
-    $this->stylesheets = print_r($this->getResponse()->getStylesheets(),1);
+    $this->adeImage = $adeImage;
 
   }
 
   public function executeEnable(sfWebRequest $request)
   {
-    $this->getResponse()->setCookie('offline', 'enabled', '1 year');
-    $this->getUser()->setFlash('info', 'Cookie enregistré');
-    $this->redirect('/?offline=on');
-  }
-  /**
-    Disable the offline cookie 
-  */
-  public function executeDisable(sfWebRequest $request)
-  {
-    $this->getResponse()->setCookie('offline', '', 'yesterday');
-    $this->getUser()->setFlash('info', 'Cookie offline effacé');
-    $this->redirect('/?offline=off');
   }
 }

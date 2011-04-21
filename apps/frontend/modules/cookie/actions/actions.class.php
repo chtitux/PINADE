@@ -26,6 +26,9 @@ class cookieActions extends sfActions
       case 'css':
         $this->setStylesheet($request);
         break;
+      case 'offline':
+	$this->setOffline($request);
+	break;
     }
     // TODO : redirection referer sinon homepage
     $this->redirect($request->getReferer('@homepage'));
@@ -56,6 +59,10 @@ class cookieActions extends sfActions
     $this->getUser()->setFlash('info', 'Cookie enregistré');
   }
 
-  
+  protected function setOffline(sfWebRequest $request)
+  {
+    $this->getResponse()->setCookie('offline', 'enabled', '1 year');
+    $this->getUser()->setFlash('info', 'Cookie enregistré');
+  }
 
 }
