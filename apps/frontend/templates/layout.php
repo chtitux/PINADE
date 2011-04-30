@@ -101,7 +101,8 @@
             code source du projet <acronym title="PINADE Is Not ADE"><?php echo link_to('PINADE', 'https://github.com/PINADE/PINADE') ?></acronym> sur <?php echo link_to('GitHub', 'https://github.com/ ') ?>
           - <a href="mailto:contact@iariss.fr">Contact</a>
           - <?php echo link_to('FAQ', '@page?url=faq') ?>
-          - <span id="status"></span>
+          - <span id="status"></span> <span id="status2"></span>
+          - <span onclick="window.applicationCache.update()" style="cursor:pointer">mettre à jour le cache</span>
         </p>
       </div>
     </div>
