@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # Version : timestamp of the image of the current week
-# V <?php echo filemtime(sfConfig::get('sf_web_dir').$adeImage->getWebPath()) ?>
+# V <?php echo intval(time()/10)+filemtime(sfConfig::get('sf_web_dir').$adeImage->getWebPath()) ?>
 
 CACHE:
 # CSS files
