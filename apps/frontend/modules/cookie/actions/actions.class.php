@@ -22,6 +22,9 @@ class cookieActions extends sfActions
     {
       case 'default':
         $this->setDefault($request);
+        if($this->getUser()->isAuthenticated())
+          $this->getUser()->getGuardUser()->setMyedtId(5);
+          $this->getUser()->getGuardUser()->save();
         break;
       case 'css':
         $this->setStylesheet($request);
