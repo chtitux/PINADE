@@ -1,5 +1,4 @@
 
-var eat = ['yum!', 'gulp', 'burp!', 'nom'];
 var yum = document.createElement('li');
 var msie = /*@cc_on!@*/0;
 yum.style.opacity = 1;
@@ -16,10 +15,11 @@ for (var i = 0; i < links.length; i++) {
   });
 }
 
-var bin = document.querySelector('#bin');
-var binList = document.querySelector('#bin > ul');
+var myedt = document.querySelector('#myedt');
+var myedtList = document.querySelector('#myedt-liste');
+var myedtBin = document.querySelector('#myedt-bin');
 
-addEvent(bin, 'dragover', function (e) {
+addEvent(myedtList, 'dragover', function (e) {
   if (e.preventDefault) e.preventDefault(); // allows us to drop
   this.className = 'over';
   e.dataTransfer.dropEffect = 'copy';
@@ -27,16 +27,16 @@ addEvent(bin, 'dragover', function (e) {
 });
 
 // to get IE to work
-addEvent(bin, 'dragenter', function (e) {
+addEvent(myedtList, 'dragenter', function (e) {
   this.className = 'over';
   return false;
 });
 
-addEvent(bin, 'dragleave', function () {
+addEvent(myedtList, 'dragleave', function () {
   this.className = '';
 });
 
-addEvent(bin, 'drop', function (e) {
+addEvent(myedtList, 'drop', function (e) {
   if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting...why???
   if (e.preventDefault) e.preventDefault(); // allows us to drop
 
@@ -44,10 +44,10 @@ addEvent(bin, 'drop', function (e) {
   
   //el.parentNode.removeChild(el);
   // Remove "hover" effect
-  bin.className = '';
+  myedtList.className = '';
 
   // append to the <ul> list in the menu
-  appendToBin(el);
+  appendToMyedt(el);
 
   // save into the local storage
   addToStorage(el);
@@ -86,15 +86,51 @@ function restoreStorage()
     var item = document.createElement('a');
     item.href = edts[i].href;
     item.innerHTML = edts[i].name;
-    appendToBin(item);
+    item.id = "id-"+edts[i].name;
+    appendToMyedt(item);
   }
   return true;
 }
 
-function appendToBin(element)
+function appendToMyedt(element)
 { 
   var y = yum.cloneNode(true);
-  y.appendChild(element.cloneNode(true));
-  binList.appendChild(y);
+  var a = element.cloneNode(true);
+  a.id = "id-"+element.innerHTML;
+  y.appendChild();
+  myedtList.appendChild(y);
 }
+
+/* Manage bin */
+
+addEvent(myedtBin, 'dragover', function (e) {
+  if (e.preventDefault) e.preventDefault(); // allows us to drop
+  this.className = 'over';
+  e.dataTransfer.dropEffect = 'copy';
+  return false;
+});
+
+// to get IE to work
+addEvent(myedtBin, 'dragenter', function (e) {
+  this.className = 'over';
+  return false;
+});
+
+addEvent(myedtBin, 'dragleave', function () {
+  this.className = '';
+});
+
+addEvent(myedtBin, 'drop', function (e) {
+  if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting...why???
+  if (e.preventDefault) e.preventDefault(); // allows us to drop
+
+  var el = document.getElementById(e.dataTransfer.getData('Text'));
   
+  //el.parentNode.removeChild(el);
+  // Remove "hover" effect
+  myedtBin.className = '';
+
+  el.parentNode.deleteNode();
+
+  return false;
+});

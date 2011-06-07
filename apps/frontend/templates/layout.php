@@ -20,12 +20,17 @@
         </div>
 
         <div id="navigation">
+              <h2 id='accueil-menu'>
+                <?php echo link_to('Accueil', '@homepage', "inline") ?>
+              </h2>
+          <div id="myedt">
+            <b>Vos emplois du temps</b>
+          </div>
+            <div id="myedt-trash"><img src="/images/bin.png" alt="bin"/>Delete here</div>
+
           <div id="menu">
             <ul>
-              <li id='accueil-menu'>
-                <?php echo link_to('Accueil', '@homepage', "inline") ?>
 
-              </li>
 <?php $categories = Doctrine_Core::getTable('Categorie')
       ->createQuery('c')
       ->leftJoin('c.Promotions p')
@@ -45,10 +50,6 @@
               </li>
 <?php endforeach ?>
             </ul>
-          </div>
-          <div id="bin">
-            <b>Vos emplois du temps</b>
-            <ul id="bin-liste"></ul>
           </div>
           <div id="pub" style="text-align:justify; font-size:80%">
             <p>Tu veux changer de semaine avec ton <b>clavier</b>&nbsp;?<br/>
@@ -101,9 +102,7 @@
         </p>
       </div>
     </div>
-<script type="text/javascript" src="/js/dragndrop.js"></script>
-<script type="text/javascript">
-restoreStorage();
-</script>
+<!-- <script type="text/javascript" src="/js/dragndrop.js"></script> -->
+
   </body>
 </html>

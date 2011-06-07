@@ -1,8 +1,21 @@
-#bin {
+#myedt {
   border:1px solid red;
   padding:5px;
 }
 
-.over {
+.over#myedt-liste  {
+  background:#efe;
+}
+
+
+.over#myedt-bin  {
   background:red;
+}
+
+.liste-index-li {
+  z-index:100;
+  border:1px solid #ddd;
+  padding:5px;
+  background:#eee;
+  display:inline-table;
 }

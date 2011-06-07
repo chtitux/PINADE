@@ -13,9 +13,19 @@ default:
     language:     fr
     #robots:       index, follow
 
-  stylesheets:    [base.css, modele07.css, dragndrop.css ]
+  stylesheets:    [base.css, modele07.css, dragndrop.css, ui-lightness/jquery-ui-1.8.13.custom.css  ]
 
-  javascripts:    [jsutils.js]
+  javascripts:
+    - jsutils.js
+    - jquery.js
+    - jquery-ui.js
+#     - ui/jquery.ui.core.js
+#     - ui/jquery.ui.widget.js
+#     - ui/jquery.ui.mouse.js
+#     - ui/jquery.ui.sortable.js
+#     - ui/jquery.ui.position.js
+#     - ui/jquery.ui.droppable.js
+#     - ui/jquery.ui.draggable.js
 
   has_layout:     true
   layout:         layout
