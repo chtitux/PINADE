@@ -43,15 +43,58 @@ addEvent(bin, 'drop', function (e) {
   var el = document.getElementById(e.dataTransfer.getData('Text'));
   
   //el.parentNode.removeChild(el);
-
+  // Remove "hover" effect
   bin.className = '';
 
-  
-  var y = yum.cloneNode(true);
-  y.appendChild(el.cloneNode(true));
-  binList.appendChild(y);
+  // append to the <ul> list in the menu
+  appendToBin(el);
 
-
+  // save into the local storage
+  addToStorage(el);
 
   return false;
 });
+
+function addToStorage(element)
+{
+  var edts = [];
+  
+  if(localStorage.getItem('myedt'))
+    try
+    {
+      edts = JSON.parse(localStorage.getItem('myedt'));
+    } catch(e) {}
+  
+  
+  edts.push({'name':element.innerHTML, 'href':element.href});
+  
+  localStorage.setItem('myedt', JSON.stringify(edts));
+}
+
+function restoreStorage()
+{
+  var edts = [];
+  
+  if(localStorage.getItem('myedt'))
+    try
+    {
+      edts = JSON.parse(localStorage.getItem('myedt'));
+    } catch(e) {}
+  
+  for(var i = 0; i < edts.length; i++)
+  {
+    var item = document.createElement('a');
+    item.href = edts[i].href;
+    item.innerHTML = edts[i].name;
+    appendToBin(item);
+  }
+  return true;
+}
+
+function appendToBin(element)
+{ 
+  var y = yum.cloneNode(true);
+  y.appendChild(element.cloneNode(true));
+  binList.appendChild(y);
+}
+  

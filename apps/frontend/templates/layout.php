@@ -102,5 +102,8 @@
       </div>
     </div>
 <script type="text/javascript" src="/js/dragndrop.js"></script>
+<script type="text/javascript">
+restoreStorage();
+</script>
   </body>
 </html>
