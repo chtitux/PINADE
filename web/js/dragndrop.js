@@ -71,26 +71,7 @@ function addToStorage(element)
   localStorage.setItem('myedt', JSON.stringify(edts));
 }
 
-function restoreStorage()
-{
-  var edts = [];
-  
-  if(localStorage.getItem('myedt'))
-    try
-    {
-      edts = JSON.parse(localStorage.getItem('myedt'));
-    } catch(e) {}
-  
-  for(var i = 0; i < edts.length; i++)
-  {
-    var item = document.createElement('a');
-    item.href = edts[i].href;
-    item.innerHTML = edts[i].name;
-    item.id = "id-"+edts[i].name;
-    appendToMyedt(item);
-  }
-  return true;
-}
+
 
 function appendToMyedt(element)
 { 
