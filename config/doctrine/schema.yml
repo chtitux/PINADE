@@ -36,6 +36,7 @@ Promotion:
   relations:
     Categorie:  { local: categorie_id, foreign: id, type: one }
     Messages: { class: Message, local: id, foreign: promotion_id, type: many }
+    Users:    { class: sfGuardUser, local: id, foreign: myedt_id, type: many }
 
 Message:
   actAs:  { Timestampable: ~ }
@@ -53,3 +54,9 @@ Page:
     title:              { type: string(255) }
     text:               { type: string(4000) }
     
+
+sfGuardUser:
+  columns:
+    myedt_id:           { type: integer }
+  relations:
+    Myedt: { class: Promotion, local: myedt_id, foreign: id, type: one }

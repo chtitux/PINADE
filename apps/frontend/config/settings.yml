@@ -34,6 +34,12 @@ all:
       error_404_module:     edt
       error_404_action:     error404
 
+      login_module:           sfGuardAuth
+      login_action:           signin
+
+      secure_module:          sfGuardAuth
+      secure_action:          secure
+
   .settings:
     # Form security secret (CSRF protection)
     csrf_secret:            88e2c634c482128ade6e21eea47ea94a9c1075e8
@@ -48,3 +54,5 @@ all:
     # Enable the database manager
     use_database:           true
 
+    enabled_modules:      [default, sfGuardAuth]
+    

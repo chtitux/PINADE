@@ -57,6 +57,19 @@ myedt_default:
   url:  /myedt/*
   param: { module: myedt, action: index }
 
+# routes de sfGuard
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
+
 
 # Page de l'edt pour la semaine courante
 image_default_index:

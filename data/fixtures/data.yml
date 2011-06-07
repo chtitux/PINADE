@@ -424,3 +424,15 @@ Categorie:
     logo: perso.png
     weight: '20'
     in_menu: false
+sfGuardUser:
+  sfGuardUser_1:
+    first_name: null
+    last_name: null
+    email_address: demo@iariss.fr
+    username: demo
+    password: demo
+    is_active: true
+    is_super_admin: false
+    last_login: null
+    created_at: '2011-06-07 18:46:58'
+    updated_at: '2011-06-07 18:46:58'

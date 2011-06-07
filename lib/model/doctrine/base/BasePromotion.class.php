@@ -22,6 +22,7 @@
  * @property integer $height
  * @property Categorie $Categorie
  * @property Doctrine_Collection $Messages
+ * @property Doctrine_Collection $Users
  * 
  * @method string              getUrl()              Returns the current record's "url" value
  * @method string              getNom()              Returns the current record's "nom" value
@@ -40,6 +41,7 @@
  * @method integer             getHeight()           Returns the current record's "height" value
  * @method Categorie           getCategorie()        Returns the current record's "Categorie" value
  * @method Doctrine_Collection getMessages()         Returns the current record's "Messages" collection
+ * @method Doctrine_Collection getUsers()            Returns the current record's "Users" collection
  * @method Promotion           setUrl()              Sets the current record's "url" value
  * @method Promotion           setNom()              Sets the current record's "nom" value
  * @method Promotion           setDescription()      Sets the current record's "description" value
@@ -57,6 +59,7 @@
  * @method Promotion           setHeight()           Sets the current record's "height" value
  * @method Promotion           setCategorie()        Sets the current record's "Categorie" value
  * @method Promotion           setMessages()         Sets the current record's "Messages" collection
+ * @method Promotion           setUsers()            Sets the current record's "Users" collection
  * 
  * @package    edt
  * @subpackage model
@@ -142,5 +145,9 @@ abstract class BasePromotion extends sfDoctrineRecord
         $this->hasMany('Message as Messages', array(
              'local' => 'id',
              'foreign' => 'promotion_id'));
+
+        $this->hasMany('sfGuardUser as Users', array(
+             'local' => 'id',
+             'foreign' => 'myedt_id'));
     }
 }

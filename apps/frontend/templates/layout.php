@@ -96,6 +96,12 @@
           - <?php echo link_to('FAQ', '@page?url=faq') ?>
           - <span id="status"></span>
         </p>
+        <p>
+          <?php if($sf_user->isAuthenticated()): ?>
+            <?php echo link_to('signout', '@sf_guard_signout') ?>
+          <?php else: ?>
+            <?php echo link_to('signin', '@sf_guard_signin') ?>
+          <?php endif ?>
       </div>
     </div>
 
