@@ -22,9 +22,6 @@ class cookieActions extends sfActions
     {
       case 'default':
         $this->setDefault($request);
-        if($this->getUser()->isAuthenticated())
-          $this->getUser()->getGuardUser()->setMyedtId(5);
-          $this->getUser()->getGuardUser()->save();
         break;
       case 'css':
         $this->setStylesheet($request);
@@ -47,9 +44,21 @@ class cookieActions extends sfActions
     $this->redirect($request->getReferer('@homepage'));
   }
 
+  /*
+   * Set default edt
+   */
   protected function setDefault(sfWebRequest $request)
   {
-    $this->getResponse()->setCookie('default', $request->getParameter('value'), '1 year');
+    $value = $request->getParameter('value');
+
+    // save to the DB is authenticated
+    if($this->getUser()->isAuthenticated())
+    {
+      $this->getUser()->getGuardUser()->setMyedtId($value);
+      $this->getUser()->getGuardUser()->save();
+    }
+
+    $this->getResponse()->setCookie('default', $value, '1 year');
     $this->getUser()->setFlash('info', 'Cookie enregistré');
   }
 
