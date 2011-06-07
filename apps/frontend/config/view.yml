@@ -13,9 +13,9 @@ default:
     language:     fr
     #robots:       index, follow
 
-  stylesheets:    [base.css, modele07.css ]
+  stylesheets:    [base.css, modele07.css, dragndrop.css ]
 
-  javascripts:    []
+  javascripts:    [jsutils.js]
 
   has_layout:     true
   layout:         layout

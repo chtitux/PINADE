@@ -46,7 +46,10 @@
 <?php endforeach ?>
             </ul>
           </div>
-          
+          <div id="bin">
+            <b>Vos emplois du temps</b>
+            <ul id="bin-liste"></ul>
+          </div>
           <div id="pub" style="text-align:justify; font-size:80%">
             <p>Tu veux changer de semaine avec ton <b>clavier</b>&nbsp;?<br/>
               Tu souhaites avoir ton emploi du temps sur <b>Google Agenda</b> ou un logiciel similaire&nbsp;?<br/>
@@ -98,6 +101,6 @@
         </p>
       </div>
     </div>
-
+<script type="text/javascript" src="/js/dragndrop.js"></script>
   </body>
 </html>
