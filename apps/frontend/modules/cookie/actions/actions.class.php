@@ -54,7 +54,7 @@ class cookieActions extends sfActions
     // save to the DB is authenticated
     if($this->getUser()->isAuthenticated())
     {
-      $this->getUser()->getGuardUser()->setMyedtId($value);
+      $this->getUser()->getGuardUser()->setDefaultEdtId($value);
       $this->getUser()->getGuardUser()->save();
     }
 
