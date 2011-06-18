@@ -86,6 +86,7 @@ class myedtActions extends sfActions
     if($this->getUser()->isAuthenticated())
     {
       $promotion->setUrl(md5(rand().$nom.rand()."45 @^\`"));
+      $promotion->setOwnerId($this->getUser()->getGuardUser()->getId());
     }
     else
     {
