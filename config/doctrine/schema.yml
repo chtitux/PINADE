@@ -33,10 +33,12 @@ Promotion:
     start_timestamp:    { type: integer, default: 1283119200 }
     width:              { type: integer, default: 800 }
     height:             { type: integer, default: 600 }
+    owner_id:           { type: integer }
   relations:
-    Categorie:  { local: categorie_id, foreign: id, type: one }
-    Messages: { class: Message, local: id, foreign: promotion_id, type: many }
-    Users:    { class: sfGuardUser, local: id, foreign: myedt_id, type: many }
+    Categorie:          { local: categorie_id, foreign: id, type: one }
+    Messages:           { class: Message, local: id, foreign: promotion_id, type: many }
+    DefaultUsers:       { class: sfGuardUser, local: id, foreign: default_edt_id, type: many }
+    Owner:              { class: sfGuardUser, local: owner_id, foreign: id, type: one }
 
 Message:
   actAs:  { Timestampable: ~ }
@@ -57,6 +59,7 @@ Page:
 
 sfGuardUser:
   columns:
-    myedt_id:           { type: integer }
+    default_edt_id:           { type: integer }
   relations:
-    Myedt: { class: Promotion, local: myedt_id, foreign: id, type: one }
+    DefaultEdt: { class: Promotion, local: default_edt_id, foreign: id, type: one }
+    Promotions: { class: Promotion, local: id, foreign: owner_id, type: many }

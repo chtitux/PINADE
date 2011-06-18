@@ -31,6 +31,7 @@ abstract class BasePromotionForm extends BaseFormDoctrine
       'start_timestamp'  => new sfWidgetFormInputText(),
       'width'            => new sfWidgetFormInputText(),
       'height'           => new sfWidgetFormInputText(),
+      'owner_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Owner'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -50,6 +51,7 @@ abstract class BasePromotionForm extends BaseFormDoctrine
       'start_timestamp'  => new sfValidatorInteger(array('required' => false)),
       'width'            => new sfValidatorInteger(array('required' => false)),
       'height'           => new sfValidatorInteger(array('required' => false)),
+      'owner_id'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Owner'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('promotion[%s]');

@@ -20,9 +20,11 @@
  * @property integer $start_timestamp
  * @property integer $width
  * @property integer $height
+ * @property integer $owner_id
  * @property Categorie $Categorie
  * @property Doctrine_Collection $Messages
- * @property Doctrine_Collection $Users
+ * @property Doctrine_Collection $DefaultUsers
+ * @property sfGuardUser $Owner
  * 
  * @method string              getUrl()              Returns the current record's "url" value
  * @method string              getNom()              Returns the current record's "nom" value
@@ -39,9 +41,11 @@
  * @method integer             getStartTimestamp()   Returns the current record's "start_timestamp" value
  * @method integer             getWidth()            Returns the current record's "width" value
  * @method integer             getHeight()           Returns the current record's "height" value
+ * @method integer             getOwnerId()          Returns the current record's "owner_id" value
  * @method Categorie           getCategorie()        Returns the current record's "Categorie" value
  * @method Doctrine_Collection getMessages()         Returns the current record's "Messages" collection
- * @method Doctrine_Collection getUsers()            Returns the current record's "Users" collection
+ * @method Doctrine_Collection getDefaultUsers()     Returns the current record's "DefaultUsers" collection
+ * @method sfGuardUser         getOwner()            Returns the current record's "Owner" value
  * @method Promotion           setUrl()              Sets the current record's "url" value
  * @method Promotion           setNom()              Sets the current record's "nom" value
  * @method Promotion           setDescription()      Sets the current record's "description" value
@@ -57,9 +61,11 @@
  * @method Promotion           setStartTimestamp()   Sets the current record's "start_timestamp" value
  * @method Promotion           setWidth()            Sets the current record's "width" value
  * @method Promotion           setHeight()           Sets the current record's "height" value
+ * @method Promotion           setOwnerId()          Sets the current record's "owner_id" value
  * @method Promotion           setCategorie()        Sets the current record's "Categorie" value
  * @method Promotion           setMessages()         Sets the current record's "Messages" collection
- * @method Promotion           setUsers()            Sets the current record's "Users" collection
+ * @method Promotion           setDefaultUsers()     Sets the current record's "DefaultUsers" collection
+ * @method Promotion           setOwner()            Sets the current record's "Owner" value
  * 
  * @package    edt
  * @subpackage model
@@ -133,6 +139,9 @@ abstract class BasePromotion extends sfDoctrineRecord
              'type' => 'integer',
              'default' => 600,
              ));
+        $this->hasColumn('owner_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
@@ -146,8 +155,12 @@ abstract class BasePromotion extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'promotion_id'));
 
-        $this->hasMany('sfGuardUser as Users', array(
+        $this->hasMany('sfGuardUser as DefaultUsers', array(
              'local' => 'id',
-             'foreign' => 'myedt_id'));
+             'foreign' => 'default_edt_id'));
+
+        $this->hasOne('sfGuardUser as Owner', array(
+             'local' => 'owner_id',
+             'foreign' => 'id'));
     }
 }
