@@ -111,4 +111,27 @@ class myedtActions extends sfActions
 
   }
 
+  /**
+   * Copie une "promotion" vers un compte perso
+   */
+  public function executeCopy(sfWebRequest $request)
+  {
+    $promotion = Doctrine_Core::getTable('Promotion')->find($request->getParameter('id'));
+    $this->forward404Unless($promotion);
+
+    // Il faut être authentifier pour copier vers son propre compte
+    $this->forward404Unless($this->getUser()->isAuthenticated());
+
+    $newPromo = $promotion->copy();
+    $newPromo->setOwnerId($this->getUser()->getGuardUser()->getId());
+    $newPromo->setUrl(md5(time()."4@ç_é{2".rand())); // md5 is generated with a "salt"
+    $newPromo->setCategorieId(Doctrine_Core::getTable('Categorie')
+      ->createQuery('c')
+      ->where('c.url = "perso"')
+      ->execute()->getFirst()->getId()
+    );
+    $newPromo->save();
+
+    $this->redirect("@image?categorie=".$newPromo->getCategorie()->getUrl()."&promo=".$newPromo->getUrl()."&semaine=");
+  }
 }

@@ -26,7 +26,7 @@ class edtActions extends sfActions
 
       // On vérifie si la promo existe bien, pour éviter les farces
       // et les redirections infinies (cookie mis à "/" par exemple
-      if($promotion->count())
+      if($promotion)
         $this->redirect("@image?categorie=".$promotion->getCategorie()->getUrl()."&promo=".$promotion->getUrl()."&semaine=");
     }
 

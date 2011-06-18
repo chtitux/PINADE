@@ -21,11 +21,14 @@
 
         <div id="navigation">
           <div id="menu">
-            <ul>
-              <li id='accueil-menu'>
+              <div id='accueil-menu'>
                 <?php echo link_to('Accueil', '@homepage', "inline") ?>
 
-              </li>
+              </div>
+
+<?php include_partial('global/account-menu') ?>
+
+            <ul>
 <?php $categories = Doctrine_Core::getTable('Categorie')
       ->createQuery('c')
       ->leftJoin('c.Promotions p')
@@ -96,12 +99,6 @@
           - <?php echo link_to('FAQ', '@page?url=faq') ?>
           - <span id="status"></span>
         </p>
-        <p>
-          <?php if($sf_user->isAuthenticated()): ?>
-            <?php echo link_to('signout', '@sf_guard_signout') ?>
-          <?php else: ?>
-            <?php echo link_to('signin', '@sf_guard_signin') ?>
-          <?php endif ?>
       </div>
     </div>
 
