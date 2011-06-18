@@ -22,7 +22,7 @@ class edtActions extends sfActions
     $default = intval($request->getCookie('default'));
     if(! empty($default))
     {
-      $promotion = Doctrine_Core::getTable('Promotion')->find($default);;
+      $promotion = Doctrine_Core::getTable('Promotion')->find($default);
 
       // On vérifie si la promo existe bien, pour éviter les farces
       // et les redirections infinies (cookie mis à "/" par exemple
