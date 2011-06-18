@@ -83,10 +83,17 @@ class myedtActions extends sfActions
     $promotion->setCategorieId($categorie->getId());
     $promotion->setNom($nom);
     $promotion->setDescription($request->getParameter('description'));
-    $promotion->setUrl($nom);
+    if($this->getUser()->isAuthenticated())
+    {
+      $promotion->setUrl(md5(rand().$nom.rand()."45 @^\`"));
+    }
+    else
+    {
+      $promotion->setUrl($nom);
+    }
     $promotion->save();
 
-    $this->redirect('@image?categorie=perso&promo='.$request->getParameter('nom').'&semaine=');
+    $this->redirect('@image?categorie=perso&promo='.$promotion->getUrl().'&semaine=');
 
    // https://www.emploisdutemps.uha.fr/ade/imageEt?&&&width=800&height=600&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1283427991552&displayConfId=8
 
