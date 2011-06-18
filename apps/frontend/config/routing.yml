@@ -70,6 +70,15 @@ sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
 
+account_default:
+  url:  /account/*
+  param: { module: account, action: my }
+
+account:
+  url:  /account/:action/*
+  param: { module: account }
+
+# Toutes les routes en dessous de cette ligne sont réservées
 
 # Page de l'edt pour la semaine courante
 image_default_index:
