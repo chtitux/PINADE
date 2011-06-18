@@ -12,8 +12,4 @@
  */
 class Message extends BaseMessage
 {
-  public function __toString()
-  {
-    return $this->getTexte();
-  }
 }

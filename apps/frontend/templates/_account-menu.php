@@ -13,5 +13,7 @@
 
   <?php else: ?>
     <?php echo link_to('Se connecter', '@sf_guard_signin') ?>
+<?php include_component('sfApply', 'login') ?>
+
   <?php endif ?>
 </div>

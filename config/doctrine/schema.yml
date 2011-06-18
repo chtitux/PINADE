@@ -63,3 +63,30 @@ sfGuardUser:
   relations:
     DefaultEdt: { class: Promotion, local: default_edt_id, foreign: id, type: one }
     Promotions: { class: Promotion, local: id, foreign: owner_id, type: many }
+# 
+# sfGuardUserProfile:
+#   tableName: sf_guard_user_profile
+#   columns:
+#     id:
+#       type: integer(4)
+#       primary: true
+#       autoincrement: true
+#     user_id:
+#       type: integer(8)
+#       notnull: true
+#     email:
+#       type: string(80)
+#     fullname:
+#       type: string(80)
+#     validate:
+#       type: string(17)
+#   # Don't forget this!
+#   relations:
+#     User:
+#       class: sfGuardUser
+#       foreign: id
+#       local: user_id
+#       type: one  
+#       onDelete: cascade    
+#       foreignType: one
+#       foreignAlias: Profile

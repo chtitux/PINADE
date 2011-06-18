@@ -2,4 +2,20 @@
 # http://www.symfony-project.org/reference/1_4/en/11-App
 
 # default values
-#all:
+all:
+  sfForkedApply:
+    from:
+      email: "contact@chtitux.org"
+      fullname: "PINADE / chtitux.org"
+    routes:
+      apply: /user/new
+      reset: /user/password-reset
+      resetRequest: /user/reset-request
+      resetCancel: /user/reset-cancel
+      validate: /user/confirm/:validate
+      settings: /user/settings
+  # that section is as a fallback only
+  sfApplyPlugin:
+    from:
+      email: "contact@chtitux.org"
+      fullname: "PINADE / chtitux.org"

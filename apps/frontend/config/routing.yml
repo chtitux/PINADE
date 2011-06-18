@@ -70,6 +70,7 @@ sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
 
+# Module account
 account_default:
   url:  /account/*
   param: { module: account, action: my }
@@ -78,6 +79,35 @@ account:
   url:  /account/:action/*
   param: { module: account }
 
+# # Plugin sfApply
+# apply:
+#   url:  /apply
+#   param: { module: sfApply, action: apply }
+# 
+# reset:
+#   url: /reset
+#   param: { module: sfApply, action: reset }
+# 
+# resetRequest:
+#   url: /reset-request
+#   param: { module: sfApply, action: resetRequest }
+# 
+# validate:
+#   url: /confirm/:validate
+#   param: { module: sfApply, action: confirm }
+# 
+# settings:
+#   url: /settings
+#   param: { module: sfApply, action: settings }
+
+# We implement the missing sf_guard_password feature from sfGuardPlugin
+sf_guard_password:
+  url: /reset-request
+  param: { module: sfApply, action: resetRequest }
+
+#
+# end of not-default routing
+#
 # Toutes les routes en dessous de cette ligne sont réservées
 
 # Page de l'edt pour la semaine courante
