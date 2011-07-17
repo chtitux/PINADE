@@ -15,6 +15,7 @@ class ProjectConfiguration extends sfProjectConfiguration
     // Authentification
     $this->enablePlugins('sfDoctrineGuardPlugin');
     $this->enablePlugins('sfFacebookConnectPlugin');
+require '/var/www/pinade/pinade-git/plugins/Facebook/facebook-php-sdk-ab2d46d/src/facebook.php';
   
     // config ADE
     $this->enablePlugins('sfADEConfigPlugin');
