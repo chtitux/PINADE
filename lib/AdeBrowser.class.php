@@ -58,7 +58,7 @@ class AdeBrowser
     $this->content = curl_exec($handle);
     $this->curl_handle = $handle;
 
-    if(strpos(curl_getinfo($handle, CURLINFO_EFFECTIVE_URL), "https://cas.uha.fr") !== false)
+    if(strpos(curl_getinfo($handle, CURLINFO_EFFECTIVE_URL), "http://adeweb.univ-lyon1.fr/ade/standard/redirectIndex.jsp") !== false)
     {
       // Le cookie n'est pas trouvé
       throw new sfAdeException("Problème d'authentification ADE (redirection)");
@@ -77,57 +77,23 @@ class AdeBrowser
   {
     sfContext::getInstance()->getLogger()->info('get ADE Cookie');
 
-    /* Get lt for login */
-    $login_page = file_get_contents("https://cas.uha.fr/cas/login");
-    $pattern = '@name="lt" value="([^"]+)" />@';
-    preg_match($pattern, $login_page, $matches);
-    $lt = $matches[1];
-
-    // base 64 : sfConfig::get('app_ade_url')
-
-    /* Get CAS Cookie and link to emploidutemps.uha.fr */
-    $data_string = base64_decode(sfConfig::get('app_cas_login'))."&lt=$lt";
-    $handle = curl_init("https://cas.uha.fr/cas/login?service=http://www.emploisdutemps.uha.fr:80/ade/standard/gui/interface.jsp");
+    /* Get CAS Cookie and link to adeweb.univ-lyon1.fr */
+    $data_string = base64_decode(sfConfig::get('app_cas_login'))."&x=33&y=10";
+    $handle = curl_init("http://adeweb.univ-lyon1.fr/ade/standard/gui/interface.jsp?top=top");
     curl_setopt($handle, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded')); 
     curl_setopt($handle, CURLOPT_POST, true);
-    curl_setopt($handle, CURLOPT_POSTFIELDS, $data_string /* $data */);
+    curl_setopt($handle, CURLOPT_POSTFIELDS, $data_string);
     curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false); /* curl does not like the ss cert. of uha.fr */
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($handle, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; fr; rv:1.9.2.7) Gecko/20100701 Firefox/3.6.7 contact@iariss.fr");
-    curl_setopt($handle, CURLOPT_REFERER, "https://cas.uha.fr/cas/login");
+    curl_setopt($handle, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; fr; rv:1.9.2.7) Gecko/20100701 Firefox/3.6.7 chtitux@chtitux.org");
+    curl_setopt($handle, CURLOPT_REFERER, "http://adeweb.univ-lyon1.fr/ade/standard/index.jsp");
     curl_setopt($handle, CURLOPT_HEADER, true);
+    curl_setopt($handle, CURLOPT_FOLLOWLOCATION, true);
 
     // Use a file to stock the cookies
     // You do not need old cookies when you start a new authentification
     curl_setopt($handle, CURLOPT_COOKIEJAR, sfConfig::get('app_ade_cookiefile'));
 
-    $content = curl_exec($handle);
-
-    /* Get ticket */
-    $pattern = '@window.location.href="([^"]+)@';
-    preg_match($pattern, $content, $matches);
-    $link_edt = $matches[1];
-
-    sfContext::getInstance()->getLogger()->info('edt link : "'.$link_edt.'" ');
-
-    if(empty($link_edt))
-      throw new sfException('Pas de lien ade ('.$link_edt.')');
-
-    // then, the ADE cookie
-    sfContext::getInstance()->getLogger()->info('get Ade Cookie');
-
-    $handle = curl_init($link_edt);
-    curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false); 
-    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($handle, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; fr; rv:1.9.2.7) Gecko/20100701 Firefox/3.6.7 contact@iariss.fr");
-    curl_setopt($handle, CURLOPT_REFERER, "https://cas.uha.fr/cas/login");
-    curl_setopt($handle, CURLOPT_HEADER, true);
-
-    // Use a file to stock the cookies
-    curl_setopt($handle, CURLOPT_COOKIEJAR,  sfConfig::get('app_ade_cookiefile'));
-    curl_setopt($handle, CURLOPT_COOKIEFILE, sfConfig::get('app_ade_cookiefile'));
-
-    curl_setopt($handle, CURLOPT_FOLLOWLOCATION, true);
     $content = curl_exec($handle);
     curl_close($handle); // cURL write cookies in the Cookies Jar file
 
