@@ -12,6 +12,7 @@
     <?php include_stylesheets() ?>
     <link rel="stylesheet" href="/css/mobile.css" type="text/css" media="handheld, only screen and (max-device-width: 480px)" />
     <?php include_javascripts() ?>
+    <?php include_partial('global/specific_css') ?>
 
   </head>
   <body>
