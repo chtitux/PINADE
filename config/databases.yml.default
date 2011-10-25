@@ -8,3 +8,6 @@ all:
       dsn:      mysql:host=localhost;dbname=edt
       username: root
       password: 
+      attributes:
+        tblname_format: "pinade_%s"
+
