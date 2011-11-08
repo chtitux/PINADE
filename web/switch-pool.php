@@ -37,6 +37,9 @@ if(preg_match("@^(|[l46]\.)([-a-z0-9]+)\.pinade.*@", $_SERVER['SERVER_NAME'], $m
     case "tours-pharma":
     case "tours-ldroit":
     case "tours-mdroit":
+
+    case "iut86-gte":
+
       define('NOM_EDT', $edt);
       break;
     default:
