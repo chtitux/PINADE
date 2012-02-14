@@ -17,9 +17,9 @@ class updatePoitiersIdentifierTask extends updateIdentifierTask
     $this->urls = array(
       'custom/modules/plannings/plannings.jsp', // Mandatory (because of ADE)
       'standard/gui/tree.jsp?category=trainee&expand=false&forceLoad=false&reload=false&scroll=0', // Select groups of students
-      'standard/gui/tree.jsp?branchId=4339&reset=true&forceLoad=false&scroll=0', // Select a group (AUP-DU-DAEU-DEUST)
-      'standard/gui/tree.jsp?branchId=6037&reset=false&forceLoad=false&scroll=0', // Select a group (AUP)
-      'standard/gui/tree.jsp?selectId=9617&reset=true&forceLoad=false&scroll=0', // "Click" on a group (3A Info S5)
+      'standard/gui/tree.jsp?branchId=14976&reset=true&forceLoad=false&scroll=0', // Select a group (AUP-DU-DAEU-DEUST)
+      'standard/gui/tree.jsp?branchId=14986&reset=false&forceLoad=false&scroll=0', // Select a group (AUP)
+      'standard/gui/tree.jsp?selectId=15153&reset=true&forceLoad=false&scroll=0', // "Click" on a group (3A Info S5)
     );
 
 
