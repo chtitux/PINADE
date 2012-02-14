@@ -31,7 +31,11 @@
               </div>
 <?php endif ?>
 
-          <img src='<?php echo url_for("@image_img?categorie=".$categorie->getUrl()."&promo=".$promotion->getUrl()."&semaine=$semaine") ?>' alt='emploi du temps <?php echo $categorie." ".$promotion ?>'/>
+          <img
+            src='<?php echo url_for("@image_img?categorie=".$categorie->getUrl()."&promo=".$promotion->getUrl()."&semaine=$semaine") ?>'
+            alt='emploi du temps <?php echo $categorie." ".$promotion ?>'
+            id="imgedt-<?php echo $categorie->getUrl() ?>-<?php echo $promotion->getUrl() ?>"
+          />
 
 <?php include_partial('global/adsense_lb') ?>
 
