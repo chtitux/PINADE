@@ -40,7 +40,7 @@ class jsonActions extends sfActions
       "edtDisplayMode"		=> $edt->getDisplayMode(),
       "edtDisplayConfId"	=> $edt->getDisplayConfId(),
     );
-
+    $this->getResponse()->setContentType("application/json");
     $this->getResponse()->setContent(json_encode($json_data));
     $this->setLayout(false);
     return sfView::NONE;
