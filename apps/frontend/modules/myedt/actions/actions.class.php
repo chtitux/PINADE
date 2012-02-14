@@ -55,7 +55,7 @@ class myedtActions extends sfActions
     {
       if(preg_match($pattern, $adeurl, $matches[$id]) == 0)
       {
-        $request->setParameter('erreur', "Problème dans l'URL de l'image ($id incorrect/non trouvé)");
+        $request->setParameter('erreur', "Problème dans l'URL de l'image ($id incorrect/non trouvé) [".$adeurl."]");
         $this->forward('myedt', 'import');
       }
     }
