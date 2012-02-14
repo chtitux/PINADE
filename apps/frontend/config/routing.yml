@@ -75,6 +75,11 @@ message_process:
   url: /message_process
   param: { module: pages, action: messageprocess }
 
+# JSON
+json:
+  url:  /json/:action/*
+  param: { module: json }
+
 
 # Page de l'edt pour la semaine courante
 image_default_index:
