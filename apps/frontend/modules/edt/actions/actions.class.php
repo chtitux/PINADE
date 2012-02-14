@@ -101,6 +101,9 @@ class edtActions extends sfActions
     {
       sfConfig::set('sf_cache', false);
       $this->getResponse()->setHttpHeader('X-sft-cache', 'not cached, '.date('H:i:s'));
+      $this->getResponse()->setHttpHeader('Cache-Control', 'no-cache');
+      $this->getResponse()->setHttpHeader('Pragma', 'no-cache');
+
     }
 
     // Timestamp du lundi, début de semaine
