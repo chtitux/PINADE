@@ -52,44 +52,18 @@ class updateUhaIdentifierTask extends updateIdentifierTask
     curl_setopt($handle, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; fr; rv:1.9.2.7) Gecko/20100701 Firefox/3.6.7 contact@iariss.fr");
     curl_setopt($handle, CURLOPT_REFERER, "https://cas.uha.fr/cas/login");
     curl_setopt($handle, CURLOPT_HEADER, true);
+    // Follow the redirect (patched on 2013-03-14)
+    curl_setopt($handle, CURLOPT_FOLLOWLOCATION, true);
 
     // Use a file to stock the cookies
     // You do not need old cookies when you start a new authentification
     curl_setopt($handle, CURLOPT_COOKIEJAR, $this->ade_server->getCookieFile());
+    // Use a file to stock the cookies
+    curl_setopt($handle, CURLOPT_COOKIEFILE, $this->ade_server->getCookieFile());
 
     $this->logSection('auth', "get link for emploisdutemps.uha.fr");
     $content = curl_exec($handle);
 
-    /* Get ticket */
-    $pattern = '@window.location.href="([^"]+)@';
-    if(preg_match($pattern, $content, $matches) == 0)
-      throw new Exception("Redirection javascript non trouvee après authentification sur cas.uha.fr. Mauvais login/mdp ?");
-
-    $link_edt = $matches[1];
-
-    $this->logSection('auth', 'got edt link : "'.$link_edt.'" ');
-
-    if(empty($link_edt))
-      throw new sfException('Pas de lien ade ('.$link_edt.')');
-
-    // then, the ADE cookie
-    $this->logSection('auth', 'get Ade Cookie');
-
-    $handle = curl_init($link_edt);
-    curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false); 
-    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($handle, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; fr; rv:1.9.2.7) Gecko/20100701 Firefox/3.6.7 contact@iariss.fr");
-    curl_setopt($handle, CURLOPT_REFERER, "https://cas.uha.fr/cas/login");
-    curl_setopt($handle, CURLOPT_HEADER, true);
-
-    // Use a file to stock the cookies
-    curl_setopt($handle, CURLOPT_COOKIEJAR,  $this->ade_server->getCookieFile());
-    curl_setopt($handle, CURLOPT_COOKIEFILE, $this->ade_server->getCookieFile());
-
-    curl_setopt($handle, CURLOPT_FOLLOWLOCATION, true);
-
-    $this->logSection('auth', "Get $link_edt");
-    $content = curl_exec($handle);
     curl_close($handle); // cURL write cookies in the Cookies Jar file
 
     $this->logSection('auth', "Fichier des cookies :\n".file_get_contents($this->ade_server->getCookieFile()));
